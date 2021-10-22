@@ -81,6 +81,28 @@ bool writeRawImage(char* filename, int w, int h, float* r, float* g, float* b)
 }
 
 int main(){
-    
+	int width, height;
+	int *h_DataR, *h_DataG, *h_DataB;
+	int *h_ResultR, * h_ResultG, *h_ResultB;
+
+	width = 1024;
+	height = 1024;
+
+    iFilename = "../../../../hubble/hubble1kby1k.raw";
+	oFilename = "hubble1kby1k_out.raw";
+
+
+	//read raw image
+	
+
+	if (!loadRawImage(iFilename, width, height, h_DataR, h_DataG, h_DataB) )
+    {
+    	printf("File not found. random image generator will be used...\n");
+	}
+
+
+
+	// write result image
+	writeRawImage(oFilename, width, height, h_ResultR, h_ResultG, h_ResultB);
 
 }
