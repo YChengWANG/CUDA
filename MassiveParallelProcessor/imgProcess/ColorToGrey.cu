@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <cutil.h>
+//#include <cutil.h>
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
@@ -81,17 +81,17 @@ bool writeRawImage(char* filename, int w, int h, float* r, float* g, float* b)
 }
 
 int main(){
-	int width, height;
+	float width, height;
 	size_t data_size;
-	int *h_DataR, *h_DataG, *h_DataB;
-	int *h_ResultR, * h_ResultG, *h_ResultB;
+	float *h_DataR, *h_DataG, *h_DataB;
+	float *h_ResultR, * h_ResultG, *h_ResultB;
 
 	width = 1024;
 	height = 1024;
 	data_size = width * height * sizeof(float);
 
-    iFilename = "../../../../hubble/hubble1kby1k.raw";
-	oFilename = "hubble1kby1k_out.raw";
+    char *iFilename = "../../Image/Input/hubble1kby1k.raw";
+	char *oFilename = "./../Image/Output/hubble1kby1k_out.raw";
 
 
 	//read raw image
