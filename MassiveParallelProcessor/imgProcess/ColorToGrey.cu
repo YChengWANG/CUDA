@@ -77,6 +77,6 @@ bool writeRawImage(char* filename, int w, int h, float* r, float* g, float* b)
 }
 
 int main(){
-    int width, height = 1<<10, 1<<10;
+    
 
 }
