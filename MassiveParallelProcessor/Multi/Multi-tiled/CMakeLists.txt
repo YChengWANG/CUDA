@@ -1,0 +1,1 @@
+add_executable(Multi-tiled Multi-tiled.cu)

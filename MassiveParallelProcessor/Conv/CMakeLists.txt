@@ -1,0 +1,5 @@
+add_executable(conv1d conv1d.cu)
+add_executable(conv1d_tiled conv1d_tiled.cu)
+add_executable(con2d con2d.cu)
+add_executable(conv2d_constant conv2d_constant.cu)
+add_executable(conv2d_tiled conv2d_tiled.cu)
