@@ -31,7 +31,9 @@
 - High-Bandwidth Memory (HBM)
 - Single Instruction Multiple Data (SIMD)
 
-从上面的Tesla V100 架构图中，我们看到很多绿色的模块被打包成了一个个SM，每个SM里包含了很多的SP。
+从上面的Tesla V100 架构图中，我们看到很多绿色的模块被打包成了一个个SM，每个SM里包含了很多的SP。下图中，很形象的解释了Thread，Block和Grid的关系。其中threadIdx有x,y,z三个属性，因此可以描述三维。BlockIdx同理。BlockDim则描述每一Block中有多少Threads。
 ![](./IMG/grid-of-thread-blocks.png)
 
+
+一般的，我们需要初始化block和thread
 ![](./IMG/automatic-scalability.png)
