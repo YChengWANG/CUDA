@@ -1,3 +1,6 @@
+# **CUDA编程简介**
+-------------------
+
 ## 为什么用GPU？
 
 图中所示的是CPU和GPU的架构。CPU的设计是为了处理串行操作（sequential operations）, GPU则是用来处理并行操作（parallel operations）
