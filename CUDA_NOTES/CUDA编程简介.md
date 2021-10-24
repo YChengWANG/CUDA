@@ -49,6 +49,9 @@
 - Global Memory (grid R/W)
 - Constant Memory (grid R only)
 
+>>Unified Memory provides managed memory to bridge the host and device memory spaces. Managed memory is accessible from all CPUs and GPUs in the system as a single, coherent memory image with a common address space. This capability enables oversubscription of device memory and can greatly simplify the task of porting applications by eliminating the need to explicitly mirror data on host and device. 
+--《CUDA C++ Programming Guide》
+
 距离thread越近，读取速度越快，读取需要的时钟周期越少。
 
 ![](./IMG/memory-hierarchy.png)
