@@ -24,16 +24,28 @@
 
 首先，需要了解一些常用的术语。
 
-- Streaming Multiprocessors (SMs) - BLOCK
-- Streaming Processors (SPs) - THREAD
+- Streaming Multiprocessors (SMs) - BLOCKs
+- Streaming Processors (SPs) - THREADs
 - Synchronous DRAM (SDRAM) - Global MEM
 - Graphics Double Data Rate (GDDR) - GDDR SRAMs(used for graphics)
 - High-Bandwidth Memory (HBM)
 - Single Instruction Multiple Data (SIMD)
 
-从上面的Tesla V100 架构图中，我们看到很多绿色的模块被打包成了一个个SM，每个SM里包含了很多的SP。下图中，很形象的解释了Thread，Block和Grid的关系。其中threadIdx有x,y,z三个属性，因此可以描述三维。BlockIdx同理。BlockDim则描述每一Block中有多少Threads。
+从上面的Tesla V100 架构图中，我们看到很多绿色的模块被打包成了一个个SP，每个SM里包含了很多的SPs。下图中，很形象的解释了Thread，Block和Grid的关系。其中threadIdx有x,y,z三个属性，因此可以描述三维。BlockIdx同理。BlockDim则描述每一Block中有多少Threads。
 ![](./IMG/grid-of-thread-blocks.png)
 
+一般的，我们需要初始化blocks和threads，在核函数func<<<blocks, threads>>>()中。硬件会依据初始化可伸缩的划分编程模型，如下图。
 
-一般的，我们需要初始化block和thread
 ![](./IMG/automatic-scalability.png)
+
+## Memory on GPU
+
+- Registers (thread R/W)
+- Local Memory (thread R/W)
+- Shared Memory / Scratchpad memory (block R/W)
+- Global Memory (grid R/W)
+- Constant Memory (grid R only)
+
+距离thread越近，读取速度越快，读取需要的时钟周期越少。
+
+![](./IMG/memory-hierarchy.png)
