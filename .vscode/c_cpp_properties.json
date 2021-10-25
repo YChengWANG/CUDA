@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/Users/WangCheng/opencv/build/include/",
+                "C:/Users/WangCheng/opencv/build/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
