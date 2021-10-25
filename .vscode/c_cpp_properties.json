@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/Users/WangCheng/opencv/build/include/",
-                "C:/Users/WangCheng/opencv/build/include/opencv2"
+                "C:/Program Files/opencv/build/include/",
+                "C:/Program Files/opencv/build/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
