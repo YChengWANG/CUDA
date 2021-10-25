@@ -85,6 +85,7 @@ int main(){
 	size_t data_size;
 	float *h_DataR, *h_DataG, *h_DataB;
 	float *h_ResultR, * h_ResultG, *h_ResultB;
+	float *d_DataR, *d_DataG, *d_DataB, *d_Result;
 
 	width = 1024;
 	height = 1024;
@@ -93,21 +94,31 @@ int main(){
     char *iFilename = "../../Image/Input/hubble1kby1k.raw";
 	char *oFilename = "./../Image/Output/hubble1kby1k_out.raw";
 
-
-	//read raw image
+	// Memory Manage
 	h_DataR		= (float *)malloc(data_size);
     h_DataG		= (float *)malloc(data_size);
     h_DataB		= (float *)malloc(data_size);
-    
 
+	cudaMalloc(&d_DataR, data_size);
+	cudaMalloc(&d_DataG, data_size);
+	cudaMalloc(&d_DataB, data_size);
+
+	// Read raw image
 	if (!loadRawImage(iFilename, width, height, h_DataR, h_DataG, h_DataB) )
     {
     	printf("File not found. random image generator will be used...\n");
 	}
 
+	// Image Process
+	cudaMemcpy(d_DataR, h_DataR, data_size, cudaHostToDevice);
+	cudaMemcpy(d_DataG, h_DataG, data_size, cudaHostToDevice);
+	cudaMemcpy(d_DataB, h_DataB, data_size, cudaHostToDevice);
 
+	dim3 BLOCKS = 4*4;
+	dim3 THREADS = 256*256;
+	colorToGrey<<<BLOCKS, THREADS>>>();
 
-	// write result image
+	// Write result image
 	h_ResultR	= (float *)malloc(data_size);
     h_ResultG	= (float *)malloc(data_size);
     h_ResultB	= (float *)malloc(data_size);
