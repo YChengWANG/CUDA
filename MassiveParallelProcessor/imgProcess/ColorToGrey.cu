@@ -5,6 +5,9 @@
 #include <string.h>
 //#include <cutil.h>
 
+#include<opencv2/opencv.hpp>
+#include<fstream>
+
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
@@ -91,8 +94,8 @@ int main(){
 	height = 1024;
 	data_size = width * height * sizeof(float);
 
-    char *iFilename = "../../Image/Input/hubble1kby1k.raw";
-	char *oFilename = "./../Image/Output/hubble1kby1k_out.raw";
+    char *iFilename = "../../Image/Input/girl1kby1k.jpg";
+	char *oFilename = "./../Image/Output/girl1kby1k_out.jpg";
 
 	// Memory Manage
 	h_DataR		= (float *)malloc(data_size);
@@ -114,9 +117,9 @@ int main(){
 	cudaMemcpy(d_DataG, h_DataG, data_size, cudaHostToDevice);
 	cudaMemcpy(d_DataB, h_DataB, data_size, cudaHostToDevice);
 
-	dim3 BLOCKS = 4*4;
-	dim3 THREADS = 256*256;
-	colorToGrey<<<BLOCKS, THREADS>>>();
+	//dim3 BLOCKS = 4*4;
+	//dim3 THREADS = 256*256;
+	//colorToGrey<<<BLOCKS, THREADS>>>();
 
 	// Write result image
 	h_ResultR	= (float *)malloc(data_size);
