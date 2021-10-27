@@ -8,7 +8,7 @@
 using namespace cv;
 
 int main(){
-    Mat img = imread("./Input/girl1kby1k.jpg");
+    Mat img = imread("C:\\Users\\WangCheng\\Documents\\CUDA\\Image\\Input\\girl1kby1k.jpg\\girl1kby1k.jpg");
     namedWindow("test opencv");
     imshow("test opencv", img);
     waitKey(6000);
